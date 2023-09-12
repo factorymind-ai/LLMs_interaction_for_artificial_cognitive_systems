@@ -1,0 +1,4 @@
+(enjoy hello-world
+   (declare(salience 100))
+   =>
+   (printout t "Hello, world!" crlf))

@@ -1,0 +1,16 @@
+(defrule identify-dominant-intelligence
+(declare (salience 100))
+?student-id <- (student ?student-name ?student-grade))
+(declare (local ?intelligences))
+(bind ?intelligences (list
+(intelligence logical-mathematical ?student-grade)
+(intelligence linguistic ?student-grade)
+(intelligence naturalist ?student-grade)
+(intelligence interpersonal ?student-grade)
+(intelligence intrapersonal ?student-grade)
+(intelligence spatial ?student-grade)
+(intelligence bodily-kinesthetic ?student-grade)
+(intelligence musical ?student-grade)
+(intelligence existentialist ?student-grade)))
+(bind ?dominant-intelligence (argmax ?intelligence ?intelligences ?intelligence-value))
+(printout t "The dominant intelligence for student " ?student-name " is " ?dominant-intelligence crlf))

@@ -1,0 +1,92 @@
+# Prevents the creation of new entities in the production environment
+sp { purpose*stop*production
+    (state <s> ^superstate nil)
+-->
+    (halt)
+}
+
+# Define the values of the intelligences in the database
+sp { propose*define*intelligences
+    (state <s> ^superstate nil)
+    (<s> ^logical-mathematical-intelligence 95)
+    (<s> ^linguistic-intelligence 88)
+    (<s> ^naturalist-intelligence 20)
+    (<s> ^interpersonal-intelligence 55)
+    (<s> ^intrapersonal-intelligence 68)
+    (<s> ^space-intelligence 70)
+    (<s> ^kinesthetic-body-intelligence 30)
+    (<s> ^musical-intelligence 80)
+    (<s> ^existentialist-intelligence 76)
+-->
+
+# Defines the minimum threshold for an intelligence to be considered "dominant"
+sp { purpose*define*limit
+    (state <s> ^superstate nil)
+    (<s> ^dominant-limit 60)
+-->
+
+# Find the dominant intelligence based on the given values
+sp { find-dominant-intelligence
+    (state <s> ^superstate nil)
+    (state <s> ^intelligences
+       ^logical-mathematical-intelligence <logical-mathematical>
+       ^intelligence-linguistics <linguistics>
+       ^naturalist-intelligence <naturalist>
+       ^interpersonal-intelligence <interpersonal>
+       ^intrapersonal-intelligence <intrapersonal>
+       ^spatial-intelligence <spatial>
+       ^bodily-kinesthetic-intelligence <bodily-kinesthetic>
+       ^musical-intelligence <musical>
+       ^existential-intelligence <existentialist>)
+    (<s> ^dominant-limit <limit>)
+-->
+    (<s> ^dominant-logic-math <logic-math>)
+    (<s> ^linguistic-dominant <linguistic>)
+    (<s> ^dominant-naturalistic <naturalistic>)
+    (<s> ^interpersonal-dominant <interpersonal>)
+    (<s> ^intrapersonal-dominant <intrapersonal>)
+    (<s> ^space-dominant <spatial>)
+    (<s> ^dominant-body-kinesthetic <body-kinesthetic>)
+    (<s> ^musical-dominant <musical>)
+    (<s> ^existential-dominant <existentialist>)
+}
+
+# Example of using previous production to print dominant intelligence
+sp { print-dominant-intelligence
+    (state <s> ^superstate nil)
+    (<s> ^dominant-logic-math <logic-math>
+         ^dominant-linguistics <linguistics>
+         ^dominant-naturalistic <naturalistic>
+         ^interpersonal-dominant <interpersonal>
+         ^dominant-intrapersonal <intrapersonal>
+         ^space-dominant <spatial>
+         ^bodily-kinesthetic-dominant <bodily-kinesthetic>
+         ^musical-dominant <musical>
+         ^dominant-existentialist <existentialist>)
+-->
+    (write(crlf) "Dominant Intelligence:")
+    (write (crlf) "Logical-Math: " ^dominant-logic-math)
+    (write (crlf) "Linguistic: " ^linguistic-dominant)
+    (write (crlf) "Naturalist: " ^dominant-naturalist)
+    (write (crlf) "Interpersonal: " ^interpersonal-dominant)
+    (write (crlf) "Intrapersonal: " ^intrapersonal-dominant)
+    (write (crlf) "Spatial: " ^space-dominant)
+    (write (crlf) "Body-Kinesthetic: " ^Body-Kinesthetic-dominant)
+    (write (crlf) "Musical: " ^dominant-musical)
+    (write (crlf) "Existentialist: " ^dominant-existentialist)
+}
+
+# Run the productions in sequence
+sp { propose*execute
+    (state <s> ^superstate nil)
+-->
+    (<s> ^attr1 nil)
+    (<s> ^attr2 nil)
+    (<s> ^attr3 nil)
+    (<s> ^attr4 nil)
+    (<s> ^attr5 nil)
+    (<s> ^attr6 nil)
+    (<s> ^attr7 nil)
+    (<s> ^attr8 nil)
+    (<s> ^attr9 nil)
+}

@@ -1,0 +1,8 @@
+# This is a simple Soar code for a "Hello, World!" program.
+
+# Create a state
+sp {start
+    (state <s> ^superstate nil)
+-->
+    (write (crlf) "Hello, World!" (crlf))
+}
